@@ -1,0 +1,22 @@
+
+    @startuml
+    title Activity Diagram: Data Analysis Workflow
+
+    start
+    :Select Directory with Excel Files;
+    :Import Files;
+    :Select a File to View;
+    fork
+        :Extract Specific Columns;
+    fork again
+        :Filter Data based on Criteria;
+    fork again
+        :Merge Multiple Files;
+    end fork
+    :Generate Statistical Summary;
+    :Create Bar Chart for Visualization;
+    :Save Results to a New Excel File;
+    stop
+
+    @enduml
+    

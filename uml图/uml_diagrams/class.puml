@@ -1,0 +1,52 @@
+
+    @startuml
+    class Ui_MainWindow {
+        - centralwidget: QWidget
+        - list1: QListView
+        - text1: QTextEdit
+        - viewButton: QPushButton
+        - rButton1: QRadioButton
+        - rButton2: QRadioButton
+        - textEdit: QTextEdit
+        - menubar: QMenuBar
+        - statusbar: QStatusBar
+        - toolBar: QToolBar
+        - button1: QAction
+        - button2: QAction
+        - button3: QAction
+        - button4: QAction
+        - button5: QAction
+        - button6: QAction
+        - button7: QAction
+        + setupUi(MainWindow): void
+        + retranslateUi(MainWindow): void
+        + click1(): void
+        + clicked(qModelIndex): void
+        + click2(): void
+        + click3(): void
+        + click4(): void
+        + click5(): void
+        + click6(): void
+        + viewButton_click(): void
+    }
+
+    class pandas {
+        + read_excel()
+        + DataFrame()
+        + concat()
+        + groupby()
+        + to_excel()
+    }
+
+    class matplotlib {
+        + plot()
+        + show()
+        + figure()
+    }
+
+    Ui_MainWindow --|> QMainWindow
+    Ui_MainWindow ..> pandas : uses
+    Ui_MainWindow ..> matplotlib : uses
+
+    @enduml
+    

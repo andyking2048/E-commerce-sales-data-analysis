@@ -1,0 +1,26 @@
+
+    @startuml
+    left to right direction
+    actor "Data Analyst" as user
+    rectangle "Excel Data Analysis Tool" {
+        usecase "Import Excel Files" as UC1
+        usecase "View Data" as UC2
+        usecase "Extract Columns" as UC3
+        usecase "Filter Data" as UC4
+        usecase "Merge Files" as UC5
+        usecase "Generate Statistics" as UC6
+        usecase "Create Chart" as UC7
+        usecase "Export Results" as UC8
+    }
+
+    user --> UC1
+    user --> UC2
+    user --> UC3
+    user --> UC4
+    user --> UC5
+    user --> UC6
+    user --> UC7
+    user --> UC8
+
+    @enduml
+    

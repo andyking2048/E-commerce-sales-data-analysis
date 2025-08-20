@@ -31,13 +31,11 @@ pip install pyinstaller
 ```
 2. Windows系统：
 ```bash
-pyinstaller --onefile --windowed --add-data "image;image" dataEXCEL.py
-# 因为matplotlib包打包问题，暂时打包命令：
-python -m PyInstaller --name=ExcelDataAnalyst --windowed --onefile --add-data "image;image" --hidden-import=matplotlib.backends.backend_tkagg --hidden-import=matplotlib.backends.backend_qt5agg --hidden-import=matplotlib.backends.backend_wxagg dataEXCEL.py
+pyinstaller --onefile --windowed --add-data "image/*.png;image" dataEXCEL.py
 ```
 3. Macos系统：
 ```bash
-pyinstaller --onefile --windowed --add-data "image:image" dataEXCEL.py
+pyinstaller --onefile --windowed --add-data "image/*.png:image" dataEXCEL.py
 ```
 
 ## 打包可执行文件（方式二 使用.spec文件）
@@ -61,7 +59,7 @@ a = Analysis(
     ['dataEXCEL.py'],
     pathex=[],
     binaries=[],
-    datas=[('image, 'image')],  # 添加图片资源
+    datas=[('image/*.png', 'image')],  # 添加图片资源
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -112,10 +110,10 @@ pyinstaller --target-architecture arm64 ExcelDataAnalyst.spec   # Apple Silicon 
 6. 创建.app bundle (Mac专用)
 > 对于Mac系统，还可以创建标准的应用程序包：
 ```bash
-pyinstaller --windowed --name=ExcelDataAnalyst --add-data "image/:image" --osx-bundle-identifier=com.yourcompany.ExcelDataAnalyst dataEXCEL.py
+pyinstaller --windowed --name=ExcelDataAnalyst --add-data "image/*.png:image" --osx-bundle-identifier=com.yourcompany.ExcelDataAnalyst dataEXCEL.py
 ```
-7. 优化建议(windows系统打包命令)
+7. 优化建议
 为了减小可执行文件的大小和避免潜在问题，建议添加以下选项：
 ```bash
-python -m PyInstaller --name=ExcelDataAnalyst --windowed --onefile --add-data "image;image" --hidden-import=matplotlib.backends.backend_tkagg --hidden-import=matplotlib.backends.backend_qt5agg --hidden-import=matplotlib.backends.backend_wxagg dataEXCEL.py
+pyinstaller --onefile --windowed --name=ExcelDataAnalyst --add-data "image/*.png:image" --exclude-module tkinter --exclude-module matplotlib.backends._backend_tk dataEXCEL.py
 ```
